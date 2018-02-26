@@ -20,24 +20,14 @@ namespace WebApp.Controllers
         [HttpGet("{id}")]
         public Account Get(int id)
         {
-            if(id == 1234)
-            {
-                return new Account
-                {
-                    Balance = 10,
-                    ExpirationDate = DateTime.Now,
-                    Name = "Tom Jefferson",
-                    Number = "1234"
-                };
-            }
             return null;
         }
 
         // POST api/values
         [HttpPost]
-        public bool Post([FromBody] LoginModel value)
+        public bool Post()
         {
-           return loginService.IsValidLogin(value.CCNumber, value.Pin);
+            return false;
         }
 
         // PUT api/values/5

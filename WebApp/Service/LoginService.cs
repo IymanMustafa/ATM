@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Models;
+using WebApp.Repository;
 
 namespace WebApp.Service
 {
     public class LoginService : ILoginService
     {
+        private readonly ProfileRepository profileRepository;
+
+        public LoginService(ProfileRepository profileRepository)
+        {
+            this.profileRepository = profileRepository;
+        }
        
         public bool IsValidPin(int userId, string Pin)
 
@@ -17,13 +24,13 @@ namespace WebApp.Service
                 throw new ArgumentNullException(nameof(Pin));
 
             }
-            // read account from db
-            Account account;
+            Account account = profileRepository.GetAccount(userId);
             return Pin == account.Pin;
         }
 
-        public Account Login(string userName, string password)
+        public Profile Login(string userName, string password)
         {
+            return profileRepository.Login(userName, password);
         }
 
         public bool Logout(int userId)

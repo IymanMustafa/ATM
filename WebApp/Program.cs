@@ -9,8 +9,7 @@ namespace WebApp
     {
         public static void Main(string[] args)
         {
-            var connectionString = @"Server=.\localhost;Database=myDataBase;Trusted_Connection=True;";
-            var dbConn = new SqlConnection(connectionString);
+
             BuildWebHost(args).Run();
         }
 
