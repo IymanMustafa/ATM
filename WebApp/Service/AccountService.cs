@@ -51,5 +51,31 @@ namespace WebApp.Service
             if(userId < 1) throw new ArgumentException($"Provide valid {nameof(userId)}");
            return profileRepository.Delete(userId);
         }
+
+        public Account Get(int userId)
+        {
+            return profileRepository.GetAccount(userId);
+        }
+        public bool IsValidPin(int userId, string Pin)
+
+        {
+            if (string.IsNullOrEmpty(Pin))
+            {
+                throw new ArgumentNullException(nameof(Pin));
+
+            }
+            Account account = profileRepository.GetAccount(userId);
+            return Pin == account.Pin;
+        }
+
+        public Profile Login(string userName, string password)
+        {
+            return profileRepository.Login(userName, password);
+        }
+
+        public bool Logout(int userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

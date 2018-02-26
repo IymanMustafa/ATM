@@ -36,7 +36,7 @@ namespace WebApp.Repository
             return dbConnection.Query<Account>(query, new
             {
                 Username = username
-            }).Single();
+            }).SingleOrDefault();
         }
         public bool UpdateBalance(int userId, decimal balance)
         {
